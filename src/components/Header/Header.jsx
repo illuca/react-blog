@@ -1,5 +1,5 @@
 import {Col, Menu, Row} from 'antd';
-import {CodeOutlined, FileAddOutlined, HomeOutlined} from '@ant-design/icons';
+import {CodeOutlined, EditOutlined, HomeOutlined} from '@ant-design/icons';
 import "./Header.css"
 
 
@@ -18,7 +18,7 @@ const Header = () => {
     {
       label: ' Life',
       key: 'life',
-      icon: <FileAddOutlined/>
+      icon: <EditOutlined />
     }
   ]
 

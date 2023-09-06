@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
-import {List} from 'antd'
+import {Breadcrumb, List} from 'antd'
 import {CalendarOutlined, FireOutlined, FolderOutlined} from '@ant-design/icons';
+import "./ContentList.css"
 
 
 const ContentList = () => {
   const [mylist] = useState(
     [
       {
-        title: 'web compression',
+        title: 'data compression',
         context: 'The big companies make efforts to develop green energy not because they love the earth. But the electricity is expensive. For labor cost, you can fire them but for electricity, you have to mantain the equipment every month. The clients’ data is stored in those equipments.'
       },
       {
@@ -23,8 +24,14 @@ const ContentList = () => {
 
   return (
     <div>
+      <div className="bread-div">
+        <Breadcrumb>
+          <Breadcrumb.Item><a href="/">Home</a></Breadcrumb.Item>
+          <Breadcrumb.Item>Articles</Breadcrumb.Item>
+        </Breadcrumb>
+      </div>
       <List
-        header={<div>log</div>}
+        header={<div>Log</div>}
         itemLayout="vertical"
         dataSource={mylist}
         renderItem={item => (
