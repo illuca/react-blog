@@ -1,0 +1,14 @@
+.header-container {
+    background-color: #FFF;
+    border-bottom:1px solid #ccc;
+    overflow: hidden;
+}
+.text-holder {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.username {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}

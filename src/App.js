@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header';
+import {Col, Row} from 'antd';
+import ContentList from './components/ContentList/ContentList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Row className="main-page" justify="center">
+        <Col className="main-page-left" xs={24} sm={24} md={16} lg={18} xl={14} >
+          left
+          <ContentList/>
+        </Col>
+        <Col className="main-page-right" xs={0} sm={0} md={7} lg={5} xl={4}>
+          right
+        </Col>
+      </Row>
+
     </div>
   );
 }
