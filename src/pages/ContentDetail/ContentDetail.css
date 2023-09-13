@@ -43,3 +43,16 @@ code {
     border-bottom: 1px solid rgb(30, 144, 255);
 
 }
+
+.detailed-nav {
+    position: fixed;
+    margin-top: 20px;
+    /*background: #f83d23;*/
+    width: 188px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*box-shadow: 0 0 6px #000;*/
+    color: #fff;
+}
