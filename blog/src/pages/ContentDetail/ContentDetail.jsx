@@ -7,17 +7,16 @@ import Author from 'components/Author/Author';
 import Footer from 'components/Footer/Footer';
 import 'markdown-navbar/dist/navbar.css';
 import {marked} from 'marked';
-import {formatDate} from 'utils/utils';
+import {formatDate, useQuery} from 'utils/utils';
 import {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
-import axios from 'axios';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css'
 import Tocify from 'components/tocify.tsx'
+import {getArticleById} from 'services/services';
 
-const ContentDetail = (
-) => {
-  const { id } = useParams();
+const ContentDetail = () => {
+  const {id} = useQuery();
+
   const [article, setArticle] = useState({
     title: 'data compression',
     create_time: 0,
@@ -27,19 +26,17 @@ const ContentDetail = (
 
   const renderer = new marked.Renderer();
   const tocify = new Tocify()
-  renderer.heading = function(text, level, raw) {
+  renderer.heading = function (text, level, raw) {
     const anchor = tocify.add(text, level);
     return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
   };
 
 
   useEffect(() => {
-    axios.get(`http://localhost:7001/default/article/${id}`)
-      .then((res) => {
-        const article = res.data[0];
-        setArticle(article);
-        hljs.highlightAll();
-      });
+    getArticleById(id).then(res => {
+      setArticle(res.data[0]);
+      hljs.highlightAll();
+    });
   }, [id]);
 
 
@@ -100,17 +97,6 @@ const ContentDetail = (
 
             </div>
           </Affix>
-
-          {/*<Affix offsetTop={5}>*/}
-          {/*  <div className="detailed-nav comm-box">*/}
-          {/*    <div className="nav-title">outline</div>*/}
-          {/*    <MarkNav*/}
-          {/*      className="article-menu"*/}
-          {/*      source={article?.content}*/}
-          {/*      ordered={false}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*</Affix>*/}
         </Col>
       </Row>
       <Footer/>

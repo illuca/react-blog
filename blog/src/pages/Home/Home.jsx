@@ -3,19 +3,29 @@ import Header from 'components/Header/Header';
 import ContentList from 'components/ContentList/ContentList';
 import Author from 'components/Author/Author';
 import Footer from 'components/Footer/Footer';
-import axios from 'axios';
 import {useEffect, useState} from 'react';
+import {getArticlesByTypeId} from 'services/services';
+import {useLocation} from 'react-router-dom';
 
 
 const Home = () => {
   const [list, setList] = useState([]);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const typeId = searchParams.get('typeId');
+
   useEffect(() => {
-    axios.get('http://127.0.0.1:7001/default/articles')
-      .then((res) => {
-          setList(res.data);
-        }
-      );
+    getArticlesByTypeId(typeId).then((res)=>{
+      setList(res.data);
+    })
   },[])
+
+  useEffect(() => {
+    getArticlesByTypeId(typeId).then((res)=>{
+      setList(res.data);
+    })
+  },[typeId])
 
   return (
     <div className="App">

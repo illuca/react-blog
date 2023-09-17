@@ -21,7 +21,7 @@ const ContentList = ({list}) => {
         dataSource={list}
         renderItem={item => (
           <List.Item>
-            <Link to={`/detail/${item.id}`}>
+            <Link to={`/article?id=${item.id}`}>
               <div className="list-title">{item.title}</div>
             </Link>
             <div className="list-icon">
