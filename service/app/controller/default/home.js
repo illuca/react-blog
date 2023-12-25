@@ -33,12 +33,12 @@ where A.id = ${id}
     if (!typeId || typeId === '0') {
       // home
       sql = `select A.id, A.title, A.introduction, A.create_time, A.view_count, T.type_name
-from article A, type T
-where A.type_id = T.id;`
+             from article A, type T
+             where A.type_id = T.id;`
     } else {
       sql = `select A.id, A.title, A.introduction, A.create_time, A.view_count, T.type_name
-from article A, type T
-where A.type_id = T.id and T.id=${typeId}`;
+             from article A, type T
+             where A.type_id = T.id and T.id=${typeId}`;
     }
     ctx.body = await this.app.mysql.query(sql);
   }

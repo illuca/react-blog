@@ -11,9 +11,15 @@ module.exports = appInfo => {
    * @type {Egg.EggAppConfig}
    **/
   const config = exports = {};
-
+  const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001']
   config.cors = {
-    origin: 'http://localhost:3000', // Only allow this origin
+    origin: (ctx) => {
+      // Check if the incoming origin is in the allowedOrigins array
+      if (allowedOrigins.includes(ctx.header.origin)) {
+        return ctx.header.origin; // Reflect the requested origin
+      }
+      return false; // If not allowed, return false
+    },
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
   config.security = {

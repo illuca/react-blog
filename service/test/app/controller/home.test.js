@@ -8,7 +8,7 @@ describe('test/app/controller/default.test.js', () => {
     assert(app.config.keys.startsWith(pkg.name));
 
     // const ctx = app.mockContext({});
-    // yield ctx.service.xx();
+    // yield ctx.services.xx();
   });
 
   it('should GET /', async () => {
