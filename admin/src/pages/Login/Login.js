@@ -24,7 +24,7 @@ export default function Login() {
     checkLogin(username,password).then(
       res=>{
         setIsLoading(false)
-        if(res.data.data=='ok'){
+        if(res.data.data==='ok'){
           localStorage.setItem('openId',res.data.openId)
           navigate('/index')
         }else{
