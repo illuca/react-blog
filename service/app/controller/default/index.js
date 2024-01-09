@@ -12,10 +12,10 @@ class HomeController extends Controller {
     const id = ctx.query.id;
 
     let sql = `select title, type_name, create_time, view_count, content
-from article A,
-     type T
-where A.id = ${id}
-  and A.type_id = T.id;`;
+               from article A,
+               type T
+               where A.id = ${id}
+               and A.type_id = T.id;`;
 
     ctx.body = await this.app.mysql.query(sql);
   }

@@ -11,7 +11,7 @@ module.exports = appInfo => {
    * @type {Egg.EggAppConfig}
    **/
   const config = exports = {};
-  const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001']
+  const allowedOrigins = ['http://127.0.0.1:3000', 'http://127.0.0.1:3001']
   config.cors = {
     origin: (ctx) => {
       // Check if the incoming origin is in the allowedOrigins array
@@ -20,7 +20,13 @@ module.exports = appInfo => {
       }
       return false; // If not allowed, return false
     },
+    credentials: true,  // enable session to cross domain
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
+  config.session = {
+    key: 'EGG_SESS',
+    enable: true,
+    maxAge: 24 * 3600 * 1000
   };
   config.security = {
     csrf: {

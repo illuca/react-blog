@@ -1,6 +1,6 @@
 import request from 'utils/request';
 
-export const apiUrl = 'http://localhost:7001/default'
+export const apiUrl = 'http://127.0.0.1:7001/default'
 
 
 export async function getArticlesByTypeId(typeId) {
