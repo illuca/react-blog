@@ -26,7 +26,6 @@ export default function AddArticle() {
     updateDate: undefined,
   })
   const [typeInfo, setTypeInfo] = useState([]) // all possible article types
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getTypeInfo().then(
@@ -35,7 +34,6 @@ export default function AddArticle() {
           navigate('/login')
         } else {
           setTypeInfo(res.data.data)
-          setLoading(false)
         }
       }
     )
