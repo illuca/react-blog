@@ -42,6 +42,17 @@ create table article
     constraint article_type_null_fk
         foreign key (type_id) references type (id)
 )
+
+
+CREATE TABLE `file` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL COMMENT '文件名',
+  `md5` varchar(32) DEFAULT NULL COMMENT 'MD5值',
+  `path` varchar(100) NOT NULL COMMENT '文件路径',
+  `upload_time` datetime(3) NOT NULL COMMENT '上传时间',
+  `ext` varchar(255) DEFAULT NULL COMMENT '文件后缀名',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
 
